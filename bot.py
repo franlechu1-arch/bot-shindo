@@ -136,7 +136,10 @@ genkais = [
     "Octo-Ink",
     "Ashura Shizen",
     "Jinshiki",
-    "Ragnar"
+    "Ragnar",
+    "Bruce Kenichi",
+    "Powder",
+    "Apol-Sand"
 ]
 
 # 👉 COLE AQUI TODOS OS ELEMENTOS
