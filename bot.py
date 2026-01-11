@@ -110,8 +110,8 @@ genkais = [
     "Cobra",
     "Dokei",
     "Ice",
-    "Gold Sand"
-    "Rykan Shizen"
+    "Gold Sand",
+    "Rykan Shizen",
     "Magma",
     "Fizz",
     "Code Gaiden",
