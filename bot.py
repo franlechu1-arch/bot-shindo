@@ -50,7 +50,7 @@ genkais = [
     "Smoke",
     "Kenichi",
     "Ashen-Storm",
-    "Ares-Koncho",
+    "Koncho",
     "Narumaki",
     "Sengoku",
     "Clay",
