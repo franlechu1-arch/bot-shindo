@@ -135,7 +135,8 @@ genkais = [
     "Deva Rengoku",
     "Octo-Ink",
     "Ashura Shizen",
-    "Jinshiki"
+    "Jinshiki",
+    "Ragnar"
 ]
 
 # 👉 COLE AQUI TODOS OS ELEMENTOS
