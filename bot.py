@@ -160,6 +160,18 @@ elementos = [
     "Pyro"
 ]
 
+
+kenjutsus = [
+    "Water",
+    "Fire",
+    "Moon",
+    "Thunder",
+    "Wind",
+    "Sound",
+    "Mist",
+    "Sun"
+]
+
 # ======================
 # EVENTO
 # ======================
@@ -197,6 +209,16 @@ async def elemento(ctx):
     msg = "**🌪️ Seus Elementos Sorteados:**\n"
     for e in sorteados:
         msg += f"• {e}\n"
+
+    await ctx.send(msg)
+
+@bot.command()
+async def kenjutsu(ctx):
+    sorteados = random.sample(kenjutsus, 1)
+
+    msg = "**⚔️ Seu Kenjutsu Sorteado:**\n"
+    for k in sorteados:
+        msg += f"• {k}\n"
 
     await ctx.send(msg)
 
