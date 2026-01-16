@@ -169,7 +169,8 @@ kenjutsus = [
     "Wind",
     "Sound",
     "Mist",
-    "Sun"
+    "Sun",
+    "Shiver"
 ]
 
 # ======================
@@ -214,6 +215,10 @@ async def elemento(ctx):
 
 @bot.command()
 async def kenjutsu(ctx):
+    if len(kenjutsus) < 1:
+        await ctx.send("❌ Não há kenjutsus suficientes para sortear.")
+        return
+    
     sorteados = random.sample(kenjutsus, 1)
 
     msg = "**⚔️ Seu Kenjutsu Sorteado:**\n"
