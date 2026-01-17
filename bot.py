@@ -237,12 +237,15 @@ class TorneioView(discord.ui.View):
         self.autor_id = autor_id
         self.participantes = []
 
-    @discord.ui.user_select(
-        placeholder="Selecione os participantes",
-        min_values=2,
-        max_values=10
-    )
-    async def selecionar_participantes(self, interaction: discord.Interaction, select: discord.ui.UserSelect):
+        self.select = discord.ui.UserSelect(
+            placeholder="Selecione os participantes",
+            min_values=2,
+            max_values=10
+        )
+        self.select.callback = self.select_callback
+        self.add_item(self.select)
+
+    async def select_callback(self, interaction: discord.Interaction):
         if interaction.user.id != self.autor_id:
             await interaction.response.send_message(
                 "❌ Só quem criou o torneio pode selecionar os participantes.",
@@ -250,7 +253,7 @@ class TorneioView(discord.ui.View):
             )
             return
 
-        self.participantes = select.values
+        self.participantes = self.select.values
         nomes = ", ".join(user.mention for user in self.participantes)
 
         await interaction.response.send_message(
@@ -278,11 +281,11 @@ class TorneioView(discord.ui.View):
 
         lutas = []
         for i in range(0, len(self.participantes), 2):
-            try:
+            if i + 1 < len(self.participantes):
                 p1 = self.participantes[i]
                 p2 = self.participantes[i + 1]
                 lutas.append(f"⚔️ {p1.mention} vs {p2.mention}")
-            except IndexError:
+            else:
                 lutas.append(f"🔥 {self.participantes[i].mention} avança automaticamente")
 
         mensagem = "**🏆 TORNEIO SHINDO LIFE INICIADO 🏆**\n\n"
@@ -290,7 +293,8 @@ class TorneioView(discord.ui.View):
 
         await interaction.response.send_message(mensagem)
         self.stop()
-        
+
+
 @bot.command()
 async def torneio(ctx):
     view = TorneioView(ctx.author.id)
