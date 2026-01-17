@@ -227,6 +227,78 @@ async def kenjutsu(ctx):
 
     await ctx.send(msg)
 
+import discord
+from discord.ext import commands
+import random
+
+class TorneioView(discord.ui.View):
+    def __init__(self, autor_id):
+        super().__init__(timeout=120)
+        self.autor_id = autor_id
+        self.participantes = []
+
+    @discord.ui.user_select(
+        placeholder="Selecione os participantes",
+        min_values=2,
+        max_values=10
+    )
+    async def selecionar_participantes(self, interaction: discord.Interaction, select: discord.ui.UserSelect):
+        if interaction.user.id != self.autor_id:
+            await interaction.response.send_message(
+                "❌ Só quem criou o torneio pode selecionar os participantes.",
+                ephemeral=True
+            )
+            return
+
+        self.participantes = select.values
+        nomes = ", ".join(user.mention for user in self.participantes)
+
+        await interaction.response.send_message(
+            f"✅ Participantes selecionados:\n{nomes}",
+            ephemeral=True
+        )
+
+    @discord.ui.button(label="Iniciar Torneio", style=discord.ButtonStyle.green)
+    async def iniciar(self, interaction: discord.Interaction, button: discord.ui.Button):
+        if interaction.user.id != self.autor_id:
+            await interaction.response.send_message(
+                "❌ Só quem criou o torneio pode iniciar.",
+                ephemeral=True
+            )
+            return
+
+        if len(self.participantes) < 2:
+            await interaction.response.send_message(
+                "⚠️ Selecione pelo menos 2 participantes.",
+                ephemeral=True
+            )
+            return
+
+        random.shuffle(self.participantes)
+
+        lutas = []
+        for i in range(0, len(self.participantes), 2):
+            try:
+                p1 = self.participantes[i]
+                p2 = self.participantes[i + 1]
+                lutas.append(f"⚔️ {p1.mention} vs {p2.mention}")
+            except IndexError:
+                lutas.append(f"🔥 {self.participantes[i].mention} avança automaticamente")
+
+        mensagem = "**🏆 TORNEIO SHINDO LIFE INICIADO 🏆**\n\n"
+        mensagem += "\n".join(lutas)
+
+        await interaction.response.send_message(mensagem)
+        self.stop()
+        
+@bot.command()
+async def torneio(ctx):
+    view = TorneioView(ctx.author.id)
+    await ctx.send(
+        "🏆 **Torneio Shindo Life**\nSelecione os participantes abaixo:",
+        view=view
+    )
+
 # ======================
 # TOKEN
 # ======================
