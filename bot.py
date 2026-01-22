@@ -14,7 +14,7 @@ bot = commands.Bot(command_prefix="%", intents=intents)
 # ======================
 # LISTAS EDITÁVEIS
 # ======================
-# 👉 COLE AQUI TODAS AS GENKAIS
+
 
 genkais = [
     "Odin Saberu",
@@ -142,7 +142,7 @@ genkais = [
     "Apol-Sand"
 ]
 
-# 👉 COLE AQUI TODOS OS ELEMENTOS
+
 
 elementos = [
     "Earth",
