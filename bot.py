@@ -35,7 +35,7 @@ genkais = [
     "Renshiki",
     "Pika Senko",
     "Vine",
-    "Black Lightning    ",
+    "Black Lightning",
     "Minakami",
     "Forged Rengoku",
     "Mecha Spirit",
@@ -155,7 +155,7 @@ elementos = [
     "Gale",
     "Acid",
     "Cement",
-    "Yin (Yang)",
+    "Yin",
     "Chaos",
     "Pyro"
 ]
