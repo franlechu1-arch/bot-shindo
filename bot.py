@@ -185,6 +185,9 @@ async def on_message(message):
     if message.content.lower().startswith('boa noite'):
         await message.channel.send(f'boa noite 🌙')
 
+    if message.content.lower().startswith('bom dia'):
+        await message.channel.send(f'bom dia ☀️')
+
 
 # ======================
 # COMANDOS
