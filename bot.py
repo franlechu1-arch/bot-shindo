@@ -235,10 +235,6 @@ async def kenjutsu(ctx):
 
     await ctx.send(msg)
 
-import discord
-from discord.ext import commands
-import random
-
 class TorneioView(discord.ui.View):
     def __init__(self, autor_id):
         super().__init__(timeout=120)
