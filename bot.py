@@ -173,6 +173,8 @@ kenjutsus = [
 # EVENTO
 # ======================
 
+conteudo = message.content.lower().strip()
+
 @bot.event
 async def on_ready():
     print(f"✅ Bot online como {bot.user}")
@@ -182,20 +184,22 @@ async def on_message(message):
     if message.author == bot.user:
         return
 
-    if message.content.lower().startswith('boa noite'):
-        if message.content.lower().endswith('boa noite'):
-            return
-
+    if conteudo().startswith('boa noite'):
         await message.channel.send(f'boa noite 🌙')
 
-    if message.content.lower().startswith('bom dia'):
-        if not message.content.lower().endswith('bom dia'):
-            return
+    elif conteudo().endswith('boa noite'):
+        await message.channel.send(f'boa noite 🌙')
+
+    if conteudo().startswith('bom dia'):
+        await message.channel.send(f'bom dia ☀️')
+            
+    elif conteudo().endswith('bom dia'):
         await message.channel.send(f'bom dia ☀️')
 
-    if message.content.lower().startswith('boa tarde'):
-        if message.content.lower().endswith('boa tarde'):
-            return
+    if conteudo().startswith('boa tarde'):
+        await message.channel.send(f'boa tarde 🌤️')
+
+    elif conteudo().endswith('boa tarde'):
         await message.channel.send(f'boa tarde 🌤️')
 
 # ======================
