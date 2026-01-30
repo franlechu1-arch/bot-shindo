@@ -184,23 +184,15 @@ async def on_message(message):
 
     conteudo = message.content.lower().strip()
 
-    if conteudo.startswith('boa noite'):
+    if conteudo.startswith('boa noite') or conteudo.endswith('boa noite'):
         await message.channel.send(f'boa noite 🌙')
 
-    elif conteudo().endswith('boa noite'):
-        await message.channel.send(f'boa noite 🌙')
-
-    if conteudo().startswith('bom dia'):
-        await message.channel.send(f'bom dia ☀️')
-            
-    elif conteudo().endswith('bom dia'):
+    if conteudo.startswith('bom dia') or conteudo.endswith('bom dia'):
         await message.channel.send(f'bom dia ☀️')
 
-    if conteudo().startswith('boa tarde'):
+    if conteudo.startswith('boa tarde') or conteudo.endswith('boa tarde'):
         await message.channel.send(f'boa tarde 🌤️')
 
-    elif conteudo().endswith('boa tarde'):
-        await message.channel.send(f'boa tarde 🌤️')
 
 # ======================
 # COMANDOS
