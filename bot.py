@@ -182,16 +182,20 @@ async def on_message(message):
     if message.author == bot.user:
         return
 
-    if message.content.lower().startswith().endswith('boa noite'):
+    if message.content.lower().startswith('boa noite'):
+        if message.content.lower().endswith('boa noite'):
+            return
 
-     await message.channel.send(f'boa noite 🌙')
+        await message.channel.send(f'boa noite 🌙')
 
-    if message.content.lower().startswith().endswith('bom dia'):
-
+    if message.content.lower().startswith('bom dia'):
+        if message.content.lower().endswith('bom dia'):
+            return
         await message.channel.send(f'bom dia ☀️')
 
-    if message.content.lower().startswith().endswith('boa tarde'):
-
+    if message.content.lower().startswith('boa tarde'):
+        if message.content.lower().endswith('boa tarde'):
+            return
         await message.channel.send(f'boa tarde 🌤️')
 
 # ======================
