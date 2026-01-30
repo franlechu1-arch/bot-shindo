@@ -173,8 +173,6 @@ kenjutsus = [
 # EVENTO
 # ======================
 
-conteudo = message.content.lower().strip()
-
 @bot.event
 async def on_ready():
     print(f"✅ Bot online como {bot.user}")
@@ -184,7 +182,9 @@ async def on_message(message):
     if message.author == bot.user:
         return
 
-    if conteudo().startswith('boa noite'):
+    conteudo = message.content.lower().strip()
+
+    if conteudo.startswith('boa noite'):
         await message.channel.send(f'boa noite 🌙')
 
     elif conteudo().endswith('boa noite'):
