@@ -2,9 +2,28 @@ import discord
 from discord.ext import commands
 import random
 
+import datetime
+agora = datetime.datetime.now()
+hora_formatada = agora.strftime("%H:%M")
+
 # ======================
 # CONFIGURAÇÕES DO BOT
 # ======================
+
+dias_semana = {
+
+    "Wednesday": "Quarta-Feira",
+    "Thursday": "Quinta-Feira",
+    "Friday": "Sexta-Feira",
+    "Saturday": "Sábado",
+    "Sunday": "Domingo",
+    "Monday": "Segunda-Feira",
+    "Tuesday": "Terça-Feira"
+}
+
+dia_semana = dias_semana[agora.strftime("%A")]
+dia_mes = agora.strftime("%d")
+mes = agora.strftime("%m")
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -192,6 +211,12 @@ async def on_message(message):
 
     if conteudo.startswith('boa tarde') or conteudo.endswith('boa tarde'):
         await message.channel.send(f'boa tarde 🌤️')
+
+    if ('q horas são?') in conteudo:
+        await message.channel.send(f'São {hora_formatada} ⏰')
+
+    if ('q dia é hj?') in conteudo:
+        await message.channel.send(f' {dia_semana}, {dia_mes}/{mes} ')
 
 
 # ======================
