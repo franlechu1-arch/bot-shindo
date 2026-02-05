@@ -213,10 +213,17 @@ async def on_message(message):
         await message.channel.send(f'boa tarde 🌤️')
 
     if ('q horas são?') in conteudo:
+        agora = datetime.datetime.now()
+        hora_formatada = agora.strftime("%H:%M")
         await message.channel.send(f'São {hora_formatada} ⏰')
 
     if ('q dia é hj?') in conteudo:
+        dia_semana = dias_semana[agora.strftime("%A")]
+        dia_mes = agora.strftime("%d")
+        mes = agora.strftime("%m")
         await message.channel.send(f' {dia_semana}, {dia_mes}/{mes} ')
+
+    await bot.process_commands(message)
 
 
 # ======================
