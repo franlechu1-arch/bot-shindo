@@ -223,6 +223,7 @@ async def on_message(message):
 # COMANDOS
 # ======================
 
+
 @bot.command()
 async def genkai(ctx):
     if len(genkais) < 4:
