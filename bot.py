@@ -22,6 +22,7 @@ dias_semana = {
 }
 
 
+
 intents = discord.Intents.default()
 intents.message_content = True
 
@@ -222,6 +223,11 @@ async def on_message(message):
 
     await bot.process_commands(message)
 
+@bot.event
+async def data(ctx):
+    agora = datetime.datetime.now()
+    hora_formatada = agora.strftime("%H:%M")
+    await ctx.send(f"São {hora_formatada}")
 
 # ======================
 # COMANDOS
