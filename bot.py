@@ -223,8 +223,8 @@ async def on_message(message):
 
     await bot.process_commands(message)
 
-@bot.event
-async def data(ctx):
+@bot.command()
+async def hora(ctx):
     agora = datetime.datetime.now()
     hora_formatada = agora.strftime("%H:%M")
     await ctx.send(f"São {hora_formatada}")
