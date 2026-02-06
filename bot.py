@@ -21,9 +21,6 @@ dias_semana = {
     "Tuesday": "Terça-Feira"
 }
 
-dia_semana = dias_semana[agora.strftime("%A")]
-dia_mes = agora.strftime("%d")
-mes = agora.strftime("%m")
 
 intents = discord.Intents.default()
 intents.message_content = True
